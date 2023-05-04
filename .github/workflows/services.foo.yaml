@@ -38,7 +38,6 @@ jobs:
 
   sanity-checker:
     name: "Sanity Checker"
-    run-name: "Sanity Checker"
     needs: "test"
     steps:
       - name: "Pass"
