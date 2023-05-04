@@ -38,6 +38,7 @@ jobs:
 
   sanity-checker:
     name: "Sanity Checker"
+    runs-on: "ubuntu-latest"
     needs: "test"
     steps:
       - name: "Pass"
