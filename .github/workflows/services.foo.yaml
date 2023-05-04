@@ -41,7 +41,13 @@ jobs:
     name: "Sanity Checker"
     runs-on: "ubuntu-latest"
     needs: "test"
-    if: ${{ always() }}
     steps:
-      - name: "Checkout"
-        uses: actions/checkout@v3
+      - name: "Pass"
+        if: ${{ success() }}
+        run: exit 0
+        working-directory: ./
+
+      - name: "Fail"
+        if: ${{ failure() || cancelled() }}
+        run: exit 1
+        working-directory: ./
