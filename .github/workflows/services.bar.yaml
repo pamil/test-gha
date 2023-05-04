@@ -42,5 +42,4 @@ jobs:
     needs: "test"
     steps:
       - name: "Pass"
-        run: |
-          echo "Sanity check passed"
+        run: exit 0
