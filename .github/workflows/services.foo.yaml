@@ -1,4 +1,5 @@
 name: "Foo"
+run-name: "Foo Name"
 
 defaults:
   run:

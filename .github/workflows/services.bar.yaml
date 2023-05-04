@@ -1,4 +1,5 @@
 name: "Bar"
+run-name: "Bar Name"
 
 defaults:
   run:
