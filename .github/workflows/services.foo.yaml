@@ -28,7 +28,7 @@ jobs:
 
       - name: "Test"
         run: |
-          sleep 10
+          sleep 30
           if [ $(cat data | grep -c PASS) -eq 0 ]; then
             echo "FAIL"
             exit 1
