@@ -1,0 +1,46 @@
+name: "Bar"
+
+defaults:
+  run:
+    working-directory: "services/bar"
+
+on:
+  workflow_dispatch: ~
+  pull_request:
+    paths:
+      - ".github/workflows/services.bar.yaml"
+      - "services/bar/**"
+  push:
+    paths:
+      - ".github/workflows/services.bar.yaml"
+      - "services/bar/**"
+    branches:
+      - "main"
+
+jobs:
+  test:
+    name: "Bar Test"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "Test"
+        run: |
+          if [ $(cat data | grep -c PASS) -eq 0 ]; then
+            echo "FAIL"
+            exit 1
+          else
+            echo "PASS"
+            exit 0
+          fi
+
+  sanity-checker:
+    name: "Sanity Checker"
+    run-name: "Sanity Checker"
+    needs: "test"
+    steps:
+      - name: "Pass"
+        run: |
+          echo "Sanity check passed"
